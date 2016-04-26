@@ -205,12 +205,6 @@ bT = ones(Nx*Nz,1);
 
 ti = tic;
 
-% terms for the budget
-a_budget = zeros(Nx,1);
-b_budget = zeros(Nx,1);
-c_budget = zeros(Nx,1);
-d_budget = zeros(Nx,1);
-
 while res_max > toll && iter < it_max
     
     iter = iter + 1;
@@ -349,11 +343,6 @@ while res_max > toll && iter < it_max
     
     diss_x = 3*(hh_nd.^3).*(dP_x.^2)./(mu_nd) + (U_nd^2)*mu_nd./hh_nd;
     diss_z = 3*(hh_nd.^3).*(dP_z.^2)./(mu_nd) + (W_nd^2)*mu_nd./hh_nd;
-
-    a_budget = lap_kh(:,1);
-    b_budget = u_ee_rc(:,1);
-    c_budget = du_ee_rc_dx(:,1);
-    d_budget = du_eeP_dx(:,1) + diss_x;
     
     % Assembling Energy Equation Matrix -----------------------------------
     for i = 1 : Nx
